@@ -1,6 +1,7 @@
 package com.ezgroceries.shoppinglist.controller;
 
 import com.ezgroceries.shoppinglist.entity.CocktailResource;
+import com.ezgroceries.shoppinglist.persistence.CocktailResourceService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,9 +15,15 @@ import java.util.UUID;
 @RequestMapping(value = "/cocktails", produces = "application/json")
 public class CocktailController {
 
+    public final CocktailResourceService cocktailResourceService;
+
+    public CocktailController(CocktailResourceService cocktailResourceService) {
+        this.cocktailResourceService = cocktailResourceService;
+    }
+
     @GetMapping
     public List<CocktailResource> get(@RequestParam String search) {
-        return getDummyResources();
+        return cocktailResourceService.searchCocktails(search);
     }
 
     private List<CocktailResource> getDummyResources() {
