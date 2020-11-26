@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @RestController
@@ -33,18 +34,19 @@ public class ShoppingListController {
 
     @PostMapping(value = "/{shoppingListId}/cocktails")
     //@ResponseStatus(HttpStatus.CREATED) // 201
-    public List<CocktailId> addCocktails(@PathVariable UUID shoppingListId, @RequestBody List<CocktailId> CocktailIds){
-        return CocktailIds;
+    public Set<CocktailId> addCocktails(@PathVariable UUID shoppingListId, @RequestBody Set<CocktailId> cocktailIds){
+        shoppingListService.addCocktailsToShoppingList(shoppingListId, cocktailIds);
+        return shoppingListService.getShoppingListCocktailIds(shoppingListId);
     }
 
     @GetMapping(value = "/{shoppingListId}")
     public ShoppingListResource getShoppingList(@PathVariable UUID shoppingListId){
-        return shoppingListService.getShopping;
+        return shoppingListService.findShoppingListById(shoppingListId);
     }
 
     @GetMapping
     public List<ShoppingListResource> getAllShoppingList(){
-        return getDummyResources();
+        return shoppingListService.findAllShoppingList();
     }
 
 

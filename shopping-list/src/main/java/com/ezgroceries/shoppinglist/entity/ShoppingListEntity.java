@@ -7,6 +7,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
@@ -63,5 +65,13 @@ public class ShoppingListEntity {
 
     public void setCocktailEntitySet(Set<CocktailEntity> cocktailEntitySet) {
         this.cocktailEntitySet = cocktailEntitySet;
+    }
+
+    @Transient
+    public Set<CocktailId> getCocktailIds(){
+        Set<CocktailId> cocktailIds = new HashSet<>();
+        for(CocktailEntity ce: cocktailEntitySet)
+            cocktailIds.add(new CocktailId(ce.getId()));
+        return cocktailIds;
     }
 }
