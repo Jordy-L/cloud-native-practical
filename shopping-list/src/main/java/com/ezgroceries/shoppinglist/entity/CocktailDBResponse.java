@@ -2,7 +2,9 @@ package com.ezgroceries.shoppinglist.entity;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class CocktailDBResponse {
 
@@ -198,7 +200,7 @@ public class CocktailDBResponse {
             this.strIngredient15 = strIngredient15;
         }
 
-        public List<String> getStrIngredients(){
+        public Set<String> getStrIngredients(){
             List<String> strIngredients = new ArrayList<>();
             strIngredients.add(this.strIngredient1);
             strIngredients.add(this.strIngredient2);
@@ -216,7 +218,7 @@ public class CocktailDBResponse {
             strIngredients.add(this.strIngredient14);
             strIngredients.add(this.strIngredient15);
             strIngredients.removeAll(Collections.singleton(null));
-            return strIngredients;
+            return new HashSet<>(strIngredients);
         }
 
     }
