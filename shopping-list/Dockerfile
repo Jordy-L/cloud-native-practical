@@ -1,13 +1,7 @@
-FROM openjdk:8-jdk-alpine
-VOLUME /tmp
-ADD target/*.jar app.jar
-
 FROM maven:3.6.1-jdk-11-slim AS builder
 COPY . /source
 WORKDIR /source
 RUN mvn -B package -DskipTests
-
-
 
 FROM azul/zulu-openjdk-alpine:11-jre
 WORKDIR /app
