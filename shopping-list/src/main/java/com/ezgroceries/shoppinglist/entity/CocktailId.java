@@ -6,6 +6,8 @@ public class CocktailId {
 
     private UUID cocktailId;
 
+    public CocktailId(){};
+
     public CocktailId(UUID cocktailId) {
         this.cocktailId = cocktailId;
     }

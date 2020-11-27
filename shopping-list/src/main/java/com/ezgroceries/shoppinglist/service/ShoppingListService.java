@@ -27,6 +27,7 @@ public class ShoppingListService {
 
     public ShoppingListResource create(ShoppingListResource shoppingListResource) {
         ShoppingListEntity shoppingListEntity = ShoppingListConvertor.convertToEntity(shoppingListResource);
+        shoppingListEntity.setShoppingListId(UUID.randomUUID());
         shoppingListEntity = shoppingListRepository.save(shoppingListEntity);
         return  ShoppingListConvertor.convertToResource(shoppingListEntity);
     }
