@@ -1,7 +1,8 @@
 package com.ezgroceries.shoppinglist.controller;
 
-import com.ezgroceries.shoppinglist.entity.CocktailId;
-import com.ezgroceries.shoppinglist.resource.ShoppingListResource;
+import com.ezgroceries.cocktail.controller.resource.CocktailIdentifierResource;
+import com.ezgroceries.shoppinglist.controller.resource.ShoppingListListResource;
+import com.ezgroceries.shoppinglist.controller.resource.ShoppingListResource;
 import com.ezgroceries.shoppinglist.service.ShoppingListService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,24 +29,25 @@ public class ShoppingListController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED) // 201
-    public ShoppingListResource createShoppingList(@RequestBody ShoppingListResource shoppingListResource) {
-        return shoppingListService.create(shoppingListResource);
+    public ShoppingListListResource createShoppingListRequest(@RequestBody ShoppingListListResource shoppingListListResource) {
+        return shoppingListService.create(shoppingListListResource);
     }
 
     @PostMapping(value = "/{shoppingListId}/cocktails")
     //@ResponseStatus(HttpStatus.CREATED) // 201
-    public Set<CocktailId> addCocktails(@PathVariable UUID shoppingListId, @RequestBody Set<CocktailId> cocktailIds){
+    public Set<CocktailIdentifierResource> addCocktailIdentifierResourceRequest(@PathVariable UUID shoppingListId,
+                                                                    @RequestBody Set<CocktailIdentifierResource> cocktailIds){
         shoppingListService.addCocktailsToShoppingList(shoppingListId, cocktailIds);
         return shoppingListService.getShoppingListCocktailIds(shoppingListId);
     }
 
     @GetMapping(value = "/{shoppingListId}")
-    public ShoppingListResource getShoppingList(@PathVariable UUID shoppingListId){
+    public ShoppingListResource getShoppingListResourceRequest(@PathVariable UUID shoppingListId){
         return shoppingListService.findShoppingListById(shoppingListId);
     }
 
     @GetMapping
-    public List<ShoppingListResource> getAllShoppingList(){
+    public List<ShoppingListResource> getAllShoppingListResourceRequest(){
         return shoppingListService.findAllShoppingList();
     }
 

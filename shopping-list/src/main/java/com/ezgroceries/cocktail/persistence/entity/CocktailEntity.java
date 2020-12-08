@@ -1,4 +1,4 @@
-package com.ezgroceries.shoppinglist.entity;
+package com.ezgroceries.cocktail.persistence.entity;
 
 import com.ezgroceries.shoppinglist.util.StringSetConverter;
 
@@ -18,15 +18,11 @@ public class CocktailEntity {
     private String idDrink;
     private String name;
     private Set<String> ingredients;
+    private String glass;
+    private String instructions;
+    private String imageLink;
 
     public CocktailEntity(){};
-
-    public CocktailEntity(UUID id, String idDrink, String name, String glass, String instructions, String image, Set<String> ingredients) {
-        this.id = id;
-        this.idDrink = idDrink;
-        this.name = name;
-        this.ingredients = ingredients;
-    }
 
     @Id
     @Column(name = "id", nullable = false)
@@ -64,5 +60,32 @@ public class CocktailEntity {
 
     public void setIngredients(Set<String> ingredients) {
         this.ingredients = ingredients;
+    }
+
+    @Column(name = "glass")
+    public String getGlass() {
+        return glass;
+    }
+
+    public void setGlass(String glass) {
+        this.glass = glass;
+    }
+
+    @Column(name = "instructions")
+    public String getInstructions() {
+        return instructions;
+    }
+
+    public void setInstructions(String instructions) {
+        this.instructions = instructions;
+    }
+
+    @Column(name = "image_link")
+    public String getImageLink() {
+        return imageLink;
+    }
+
+    public void setImageLink(String image) {
+        this.imageLink = image;
     }
 }

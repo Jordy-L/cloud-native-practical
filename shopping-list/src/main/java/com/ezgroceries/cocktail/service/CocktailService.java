@@ -1,10 +1,10 @@
-package com.ezgroceries.shoppinglist.service;
+package com.ezgroceries.cocktail.service;
 
-import com.ezgroceries.shoppinglist.entity.CocktailDBResponse;
-import com.ezgroceries.shoppinglist.entity.CocktailEntity;
-import com.ezgroceries.shoppinglist.persistence.CocktailDBClient;
-import com.ezgroceries.shoppinglist.repository.CocktailRepository;
-import com.ezgroceries.shoppinglist.resource.CocktailResource;
+import com.ezgroceries.cocktail.controller.resource.CocktailResource;
+import com.ezgroceries.cocktail.persistence.entity.CocktailEntity;
+import com.ezgroceries.cocktail.persistence.repository.CocktailRepository;
+import com.ezgroceries.cocktail.service.external.CocktailDBClient;
+import com.ezgroceries.cocktail.service.external.CocktailDBResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,7 +27,7 @@ public class CocktailService {
         return mergeCocktails(cocktailDBClient.searchCocktails(name).getDrinks());
     }
 
-    public List<CocktailResource> mergeCocktails(List<CocktailDBResponse.DrinkResource> drinks) {
+    private List<CocktailResource> mergeCocktails(List<CocktailDBResponse.DrinkResource> drinks) {
         //Get all the idDrink attributes
         List<String> ids = drinks.stream().map(CocktailDBResponse.DrinkResource::getIdDrink).collect(Collectors.toList());
 
@@ -43,6 +43,9 @@ public class CocktailService {
                 newCocktailEntity.setId(UUID.randomUUID());
                 newCocktailEntity.setIdDrink(drinkResource.getIdDrink());
                 newCocktailEntity.setName(drinkResource.getStrDrink());
+                newCocktailEntity.setGlass(drinkResource.getStrGlass());
+                newCocktailEntity.setInstructions(drinkResource.getStrInstructions());
+                newCocktailEntity.setImageLink(drinkResource.getStrDrinkThumb());
                 newCocktailEntity.setIngredients(drinkResource.getStrIngredients());
                 cocktailEntity = cocktailRepository.save(newCocktailEntity);
             }

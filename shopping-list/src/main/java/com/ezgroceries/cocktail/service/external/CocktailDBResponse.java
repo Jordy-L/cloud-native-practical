@@ -1,4 +1,6 @@
-package com.ezgroceries.shoppinglist.entity;
+package com.ezgroceries.cocktail.service.external;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -39,6 +41,9 @@ public class CocktailDBResponse {
         private String strIngredient13;
         private String strIngredient14;
         private String strIngredient15;
+
+        @JsonIgnore
+        private Set<String> strIngredients;
 
         public String getIdDrink() {
             return idDrink;
@@ -200,25 +205,32 @@ public class CocktailDBResponse {
             this.strIngredient15 = strIngredient15;
         }
 
+        public void setStrIngredients(Set<String> strIngredients){
+            this.strIngredients = strIngredients;
+        }
+
         public Set<String> getStrIngredients(){
-            List<String> strIngredients = new ArrayList<>();
-            strIngredients.add(this.strIngredient1);
-            strIngredients.add(this.strIngredient2);
-            strIngredients.add(this.strIngredient3);
-            strIngredients.add(this.strIngredient4);
-            strIngredients.add(this.strIngredient5);
-            strIngredients.add(this.strIngredient6);
-            strIngredients.add(this.strIngredient7);
-            strIngredients.add(this.strIngredient8);
-            strIngredients.add(this.strIngredient9);
-            strIngredients.add(this.strIngredient10);
-            strIngredients.add(this.strIngredient11);
-            strIngredients.add(this.strIngredient12);
-            strIngredients.add(this.strIngredient13);
-            strIngredients.add(this.strIngredient14);
-            strIngredients.add(this.strIngredient15);
-            strIngredients.removeAll(Collections.singleton(null));
-            return new HashSet<>(strIngredients);
+            if (strIngredients == null){
+                List<String> strIngredients = new ArrayList<>();
+                strIngredients.add(this.strIngredient1);
+                strIngredients.add(this.strIngredient2);
+                strIngredients.add(this.strIngredient3);
+                strIngredients.add(this.strIngredient4);
+                strIngredients.add(this.strIngredient5);
+                strIngredients.add(this.strIngredient6);
+                strIngredients.add(this.strIngredient7);
+                strIngredients.add(this.strIngredient8);
+                strIngredients.add(this.strIngredient9);
+                strIngredients.add(this.strIngredient10);
+                strIngredients.add(this.strIngredient11);
+                strIngredients.add(this.strIngredient12);
+                strIngredients.add(this.strIngredient13);
+                strIngredients.add(this.strIngredient14);
+                strIngredients.add(this.strIngredient15);
+                strIngredients.removeAll(Collections.singleton(null));
+                this.strIngredients = new HashSet<>(strIngredients);
+            }
+            return strIngredients;
         }
 
     }
