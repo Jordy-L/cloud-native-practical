@@ -1,6 +1,6 @@
-package com.ezgroceries.shoppinglist.repository;
+package com.ezgroceries.shoppinglist.persistence.repository;
 
-import com.ezgroceries.shoppinglist.entity.ShoppingListEntity;
+import com.ezgroceries.shoppinglist.persistence.entity.ShoppingListEntity;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.UUID;

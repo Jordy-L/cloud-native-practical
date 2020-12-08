@@ -1,4 +1,4 @@
-package com.ezgroceries.shoppinglist.entity;
+package com.ezgroceries.cocktail.service.external;
 
 import java.util.ArrayList;
 import java.util.Collections;

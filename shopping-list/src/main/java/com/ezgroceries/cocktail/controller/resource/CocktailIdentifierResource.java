@@ -1,14 +1,15 @@
-package com.ezgroceries.shoppinglist.entity;
+package com.ezgroceries.cocktail.controller.resource;
 
 import java.util.UUID;
 
-public class CocktailId {
+public class CocktailIdentifierResource {
 
     private UUID cocktailId;
 
-    public CocktailId(){};
+    public CocktailIdentifierResource(){};
 
-    public CocktailId(UUID cocktailId) {
+
+    public CocktailIdentifierResource(UUID cocktailId) {
         this.cocktailId = cocktailId;
     }
 
@@ -19,4 +20,5 @@ public class CocktailId {
     public void setCocktailId(UUID cocktailId) {
         this.cocktailId = cocktailId;
     }
+
 }

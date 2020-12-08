@@ -1,4 +1,6 @@
-package com.ezgroceries.shoppinglist.entity;
+package com.ezgroceries.shoppinglist.persistence.entity;
+
+import com.ezgroceries.cocktail.persistence.entity.CocktailEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,8 +9,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
@@ -67,11 +67,11 @@ public class ShoppingListEntity {
         this.cocktailEntitySet = cocktailEntitySet;
     }
 
-    @Transient
+    /*@Transient
     public Set<CocktailId> getCocktailIds(){
         Set<CocktailId> cocktailIds = new HashSet<>();
         for(CocktailEntity ce: cocktailEntitySet)
             cocktailIds.add(new CocktailId(ce.getId()));
         return cocktailIds;
-    }
+    }*/
 }

@@ -1,6 +1,5 @@
-package com.ezgroceries.shoppinglist.resource;
+package com.ezgroceries.cocktail.controller.resource;
 
-import javax.persistence.Column;
 import java.util.Set;
 import java.util.UUID;
 
@@ -12,6 +11,8 @@ public class CocktailResource {
     private String instructions;
     private String image;
     private Set<String> ingredients;
+
+    public CocktailResource(){};
 
     public CocktailResource(UUID cocktailId, String name, String glass, String instructions, String image, Set<String> ingredients) {
         this.cocktailId = cocktailId;
@@ -30,7 +31,6 @@ public class CocktailResource {
         this.cocktailId = cocktailId;
     }
 
-    @Column(name = "name")
     public String getName() {
         return name;
     }

@@ -1,4 +1,4 @@
-package com.ezgroceries.shoppinglist.resource;
+package com.ezgroceries.shoppinglist.controller.resource;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
@@ -9,8 +9,6 @@ public class ShoppingListResource {
 
     private UUID shoppingListId;
     private String name;
-
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Set<String> ingredients;
 
     public ShoppingListResource(){};
@@ -19,12 +17,6 @@ public class ShoppingListResource {
         this.shoppingListId = shoppingListId;
         this.name = name;
         this.ingredients = ingredients;
-    }
-
-    public ShoppingListResource(ShoppingListResource shoppingListResource){
-        this.setShoppingListId(UUID.randomUUID());
-        this.setName(shoppingListResource.getName());
-        //this.ingredients = new ArrayList<String>();
     }
 
     public UUID getShoppingListId() {
@@ -43,6 +35,7 @@ public class ShoppingListResource {
         this.name = name;
     }
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public Set<String> getIngredients() {
         return ingredients;
     }

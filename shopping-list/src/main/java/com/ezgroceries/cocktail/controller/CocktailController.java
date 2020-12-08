@@ -1,7 +1,7 @@
-package com.ezgroceries.shoppinglist.controller;
+package com.ezgroceries.cocktail.controller;
 
-import com.ezgroceries.shoppinglist.resource.CocktailResource;
-import com.ezgroceries.shoppinglist.service.CocktailService;
+import com.ezgroceries.cocktail.controller.resource.CocktailResource;
+import com.ezgroceries.cocktail.service.CocktailService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
