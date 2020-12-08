@@ -10,4 +10,5 @@ public interface CocktailRepository extends CrudRepository<CocktailEntity, UUID>
 
     public  List<CocktailEntity> findByIdDrinkIn(List<String> ids);
 
+    public List<CocktailEntity> findByNameContainingIgnoreCase(String search);
 }

@@ -35,18 +35,19 @@ public class ShoppingListController {
 
     @PostMapping(value = "/{shoppingListId}/cocktails")
     //@ResponseStatus(HttpStatus.CREATED) // 201
-    public Set<CocktailIdentifierResource> addCocktails(@PathVariable UUID shoppingListId, @RequestBody Set<CocktailIdentifierResource> cocktailIds){
+    public Set<CocktailIdentifierResource> addCocktailIdentifierResourceRequest(@PathVariable UUID shoppingListId,
+                                                                    @RequestBody Set<CocktailIdentifierResource> cocktailIds){
         shoppingListService.addCocktailsToShoppingList(shoppingListId, cocktailIds);
         return shoppingListService.getShoppingListCocktailIds(shoppingListId);
     }
 
     @GetMapping(value = "/{shoppingListId}")
-    public ShoppingListResource getShoppingList(@PathVariable UUID shoppingListId){
+    public ShoppingListResource getShoppingListResourceRequest(@PathVariable UUID shoppingListId){
         return shoppingListService.findShoppingListById(shoppingListId);
     }
 
     @GetMapping
-    public List<ShoppingListResource> getAllShoppingListResource(){
+    public List<ShoppingListResource> getAllShoppingListResourceRequest(){
         return shoppingListService.findAllShoppingList();
     }
 
